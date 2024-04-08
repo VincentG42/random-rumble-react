@@ -30,7 +30,7 @@ function PlayerCard({ player }) {
                         </div> :
                     
                         <p> Sick</p>
-                    }}
+                    }
                     
                 </div >
             </div >
