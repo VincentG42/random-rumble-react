@@ -1,18 +1,25 @@
 import React from 'react';
 
 
+function ProgressBar({ pv, pvMax, bgType, faType, barName }) {
 
-const ProgressBar = ({pv, pvMax, bgType, faType, barName}) =>(
-            <div className="progress md-progress" >
-                <div className="progress-bar"
-                    style={{ width: (pv * 100 / pvMax) + "%" }}
-                    aria-valuenow={pv}
-                    aria-valuemin="0"
-                    aria-valuemax={pvMax}
-                    role="progressbar" >
-                    <i className={` fas ${faType} ${bgType} icon-text`}> {pv} {barName} </i>
-                </div>
-            </div >
-        )
+
+        const percent = Math.round((pv/pvMax) *100)
+
+
+        console.log(percent);
+
+    return(
+
+    <div className={`w-full bg-gradient-to-r from-red-100 from-${percent}% to-red-950 to-${percent}%`}>
+        <p className="text-neutral-50">
+            <span className='font-extrabold'>HP : </span><span>{pv}</span>/<span>{pvMax}</span>
+        </p>
+
+    </div>
+
+    )
+
+}
 
 export default ProgressBar;
