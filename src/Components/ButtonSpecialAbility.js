@@ -8,33 +8,32 @@ function ButtonSpecialAbility({ player }) {
 
     const dispatch = useDispatch();
 
-    const combat = (event) => {
-        const heroHitVAlue = Math.floor(Math.random() * (40 - 10 + 1)) + 10;
+    const combat = () => {
+        const heroHitVAlue = Math.floor(Math.random() * (50 - 20 + 1)) + 20;
 
         dispatch(hitMonster({
             hit: heroHitVAlue,
-            playerId: event.target.id,
-            specialAbility : true,
-            manaCost : 5,
+            playerId: player.id,
+            specialAbility: true,
+            manaCost: 5,
         },
-        
-        dispatch(hitBack({
-            playerId: event.target.id
 
+            dispatch(hitBack({
+                playerId: player.id,
             }))
         ))
 
     }
 
     return (
-        <button type="button" id={player.id} onClick={combat} className="btn btn-success material-tooltip-main" >
-                Special Ability
-                </button>
-                )
+        <button type="button" onClick={combat} className="btn btn-success material-tooltip-main spec_button" disabled={player.hasPlayed ? "true" : ""} >
+            Special Ability
+        </button>
+    )
 }
 
 
 
 
 
-                export default ButtonSpecialAbility;
+export default ButtonSpecialAbility;

@@ -2,6 +2,8 @@ import React from 'react';
 import ButtonCapacity from './ButtonStandardCapacity';
 import ButtonSpecialAbility from './ButtonSpecialAbility'
 import ProgressBar from './ProgressBar';
+import HealingButton from './HealingButton';
+import RegenManaButton from './RegenManaButton';
 
 
 
@@ -24,8 +26,8 @@ function PlayerCard({ player }) {
                     
                             <ButtonCapacity player={player} />
                             <ButtonSpecialAbility player={player} />
-                            <ButtonCapacity player={player} />
-                            <ButtonCapacity player={player} />
+                            <HealingButton player={player} />
+                            <RegenManaButton player={player} />
     
                         </div> :
                     

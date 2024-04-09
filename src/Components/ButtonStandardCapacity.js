@@ -9,18 +9,20 @@ import { hitMonster, hitBack } from '../features/fight/fightSlice';
 
 function ButtonStandardCapacity({ player }) {
     const dispatch = useDispatch();
-    const combat = (event) => {
+
+    const combat = () => {
         const heroHitVAlue = Math.floor(Math.random() * (20 - 5 + 1)) + 5;
 
         dispatch(hitMonster({
             hit: heroHitVAlue,
-            playerId: event.target.id,
+            playerId: player.id,
             specialAbility: false,
-        },
-            dispatch(hitBack({
-                playerId: event.target.id
+        }),
 
-            }))
+        dispatch(hitBack({
+            playerId: player.id
+
+        })
         ))
 
     }
@@ -28,7 +30,7 @@ function ButtonStandardCapacity({ player }) {
 
 
         return (
-            <button type="button" id={player.id} onClick={combat} className="btn btn-success material-tooltip-main ">
+            <button type="button" onClick={combat} className="btn btn-success material-tooltip-main hit_button" disabled={player.hasPlayed ? "true" : ""}>
                 Standard Hit
             </button>
         )
