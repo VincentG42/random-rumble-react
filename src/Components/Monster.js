@@ -13,14 +13,14 @@ const Monster = () => {
 
 
   return (
-    <section>
-      <div className="pt-24">
+    <section className='mb-16'>
+      <div className="pt-16">
         <div className="w-full flex flex-row justify-center items-end relative h-72">
           <div className="">
             <img className="absolute -translate-y-64 z-10" src={monsterAvatar} alt='monster' />
           </div>
-          <div className="flex flex justify-end rounded-lg p-4 bg-blue-700 w-1/2 backdrop-filter backdrop-blur-md bg-opacity-10 border border gray-200">
-            <div className="w-3/4">
+          <div className="flex justify-end rounded-lg p-4 bg-blue-700 w-1/2 backdrop-filter backdrop-blur-md bg-opacity-10 border border gray-200">
+            <div className="w-3/4 h-8 flex items-end">
 
               <ProgressBar pv={monster.pv}
                 pvMax={monster.pvMax}

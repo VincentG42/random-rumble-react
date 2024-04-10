@@ -1,13 +1,17 @@
 import { createSlice } from "@reduxjs/toolkit";
+import cloudAvatar from '../../assets/images/cloud.png'
+import aerithAvatar from '../../assets/images/aerith.png'
+import vincentAvatar from '../../assets/images/vincent.png'
+import redxiiiAvatar from '../../assets/images/red-xiii.png'
 
 
 const initialState = {
     // TODO : Compléter 'players' et 'monster'
     players: [
-        { name: "John", pv: 100, pvMax: 100, mana: 30, manaMax: 30, id: 1, isDead: false, hasPlayed: false },
-        { name: "Jack", pv: 100, pvMax: 100, mana: 30, manaMax: 30, id: 2, isDead: false, hasPlayed: false },
-        { name: "Jessy", pv: 100, pvMax: 100, mana: 30, manaMax: 30, id: 3, isDead: false, hasPlayed: false },
-        { name: "Jenny", pv: 100, pvMax: 100, mana: 30, manaMax: 30, id: 4, isDead: false, hasPlayed: false },
+        { name: "Cloud Strife", pv: 100, pvMax: 100, mana: 30, manaMax: 30, id: 1, isDead: false, hasPlayed: false, avatar: cloudAvatar },
+        { name: "Aerith Gainsborough", pv: 100, pvMax: 100, mana: 30, manaMax: 30, id: 2, isDead: false, hasPlayed: false, avatar: aerithAvatar },
+        { name: "Vincent Valentine", pv: 100, pvMax: 100, mana: 30, manaMax: 30, id: 3, isDead: false, hasPlayed: false, avatar: vincentAvatar },
+        { name: "Red XIII", pv: 100, pvMax: 100, mana: 30, manaMax: 30, id: 4, isDead: false, hasPlayed: false, avatar: redxiiiAvatar },
     ],
     monster: {
         pv: '800',
@@ -17,7 +21,7 @@ const initialState = {
         barName: ' : pv'
     },
     checkDeads: 0,
-    checkPlayed: 0
+   
 };
 
 export const fightSlice = createSlice({
@@ -30,17 +34,14 @@ export const fightSlice = createSlice({
             state.monster.pv -= action.payload.hit
 
             currentPlayer.hasPlayed = true;
-            state.checkPlayed += 1;
+
 
             if (action.payload.specialAbility) {
 
             }
-            if (state.monster.pv <= 0) {
-                alert('Boss is dead')
-            }
 
             action.payload.specialAbility && (currentPlayer.mana -= action.payload.manaCost);
-            EndTurn(state)
+            endTurn(state)
 
         },
 
@@ -48,16 +49,16 @@ export const fightSlice = createSlice({
 
             const currentPlayer = state.players.find(player => player.id === action.payload.playerId)
 
-            let monsterHitValue = Math.floor(Math.random() * (20 - 5 + 1)) + 5;
+            let monsterHitValue = Math.floor(Math.random() * (50 - 25 + 1)) + 25;
 
             currentPlayer.pv -= monsterHitValue
 
             if (currentPlayer.pv - monsterHitValue <= 0) {
                 currentPlayer.pv = 0
-                
-                
+
+                state.checkDeads += 1
                 currentPlayer.isDead = true
-                
+
             }
 
             gameOver(state)
@@ -71,31 +72,26 @@ export const fightSlice = createSlice({
                 currentPlayer.mana -= 10;
                 currentPlayer.pv = 100;
                 currentPlayer.hasPlayed = true;
-                state.checkPlayed += 1;
-                EndTurn(state)
+               
+                endTurn(state)
 
             } else {
                 alert('Not enough Mana')
             }
         },
 
-        regenMana:(state, action) =>{
+        regenMana: (state, action) => {
             const currentPlayer = state.players.find(player => player.id === action.payload.playerId);
 
-            if (currentPlayer.pv - 10 <= 0) {
-                currentPlayer.pv = 0
-                state.checkDeads += 1;
-                currentPlayer.isDead = true
-                console.log(state.checkDeads);
+
+            if(currentPlayer.mana +10 >= currentPlayer.manaMax){
+                currentPlayer.mana = currentPlayer.manaMax
             } else {
-                currentPlayer.pv -= 10;
-                currentPlayer.hasPlayed = true;
-                state.checkPlayed += 1;
-                EndTurn(state)
 
+                currentPlayer.mana += 10;
             }
+                endTurn(state)
 
-            gameOver(state)
         }
     },
 });
@@ -105,16 +101,26 @@ export const { hitMonster, hitBack, heal, regenMana } = fightSlice.actions
 export default fightSlice.reducer;
 
 
-function EndTurn(state){
-    if(state.checkPlayed === 4){
-        state.players.map(player => player.hasPlayed = false )
-        state.checkPlayed = 0
+function endTurn(state) {
+    const playersAlive = state.players.filter((player) => player.isDead === false)
+    const allPlayersPlayed = playersAlive.every(player => player.hasPlayed === true);
+    console.log(allPlayersPlayed);
+
+    if(allPlayersPlayed) {
+        playersAlive.map(player => {
+            player.hasPlayed = false;
+        });
     }
+
+
+ 
+
+
 }
 
 
-function gameOver(state){
+function gameOver(state) {
     if (state.checkDeads === 4) {
-        alert('You lose')
+        alert('Game over')
     }
 }
