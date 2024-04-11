@@ -13,25 +13,22 @@ const Monster = () => {
 
 
   return (
-    <section className='mb-16'>
-      <div className="pt-16">
-        <div className="w-full flex flex-row justify-center items-end relative h-72">
-          <div className="">
-            <img className="absolute -translate-y-64 z-10" src={monsterAvatar} alt='monster' />
-          </div>
-          <div className="flex justify-end rounded-lg p-4 bg-blue-700 w-1/2 backdrop-filter backdrop-blur-md bg-opacity-10 border border gray-200">
-            <div className="w-3/4 h-8 flex items-end">
+    <section className='mb-8 mt-24 md:mt-8'>
+      <div className='h-72 flex items-end justify-center px-8 md:px-0'>
 
-              <ProgressBar pv={monster.pv}
-                pvMax={monster.pvMax}
-                bgType={monster.bgType}
-                faType={monster.faType}
-                barName={monster.barName} />
-            </div>
+        
+        <div className="md:w-1/2 flex flex-row flex-wrap  justify-center md:justify-end items-end relative p-4 bg-blue-700 backdrop-filter backdrop-blur-md bg-opacity-10 border border gray-200 rounded-lg">
+        <h5 className="text-xl font-bold bg-gradient-to-tr from-indigo-600 via-blue-300 to-red-200 text-transparent bg-clip-text mb-4 text-center w-full">Sephiroth</h5>
+          <img src={monsterAvatar} alt='monster' className="md:absolute left-0 bottom-0 bottom md:z-10 w-auto" />
+          <div className="w-3/4 h-8 flex justify-end items-end">
+            <ProgressBar pv={monster.pv}
+              pvMax={monster.pvMax}
+              bgType={monster.bgType}
+              faType={monster.faType}
+              barName={monster.barName} />
           </div>
         </div>
       </div>
-
     </section >
   )
 }

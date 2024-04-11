@@ -12,9 +12,9 @@ function PlayerCard({ player }) {
 
     return (
 
-        <div className=' relative flex flex-col justify-end rounded-lg p-4 bg-blue-700 w-1/2 backdrop-filter backdrop-blur-md bg-opacity-10 border border gray-200 w-2/5'>
+        <div className=' relative flex flex-col justify-center items-center lg:items-start rounded-lg p-4 bg-blue-700  md:w-2/5 backdrop-filter backdrop-blur-md bg-opacity-10 border border gray-200'>
             <h5 className="text-xl font-bold bg-gradient-to-tr from-indigo-600 via-blue-300 to-red-200 text-transparent bg-clip-text mb-4">{player.name}</h5>
-            <div className={`lg:absolute right-0 lg:z-10 lg:mb-0 mb-4 ${player.isDead? 'grayscale' : ''}`}>
+            <div className={`lg:absolute right-0 xl:bottom-0 md:bottom-8 xl:z-10 lg:mb-0 mb-4 ${player.isDead? 'grayscale' : ''}`}>
 
                 <img src={player.avatar} className='max-w-48 h-auto max-h-60' alt='hero avatar'></img>
             </div>

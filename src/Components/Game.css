@@ -6,7 +6,7 @@
 
 body{
   font-family: "Playfair Display", serif;
-  background-color: brown;
+  
 }
 
 
@@ -14,8 +14,7 @@ body{
 .App {
   height: 100vh;
   text-align: center;
-  background-position: center;
-  background-size: cover;
+  
 }
 
 

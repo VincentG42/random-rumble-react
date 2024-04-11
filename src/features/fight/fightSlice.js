@@ -21,7 +21,7 @@ const initialState = {
         barName: ' : pv'
     },
     checkDeads: 0,
-   
+
 };
 
 export const fightSlice = createSlice({
@@ -49,7 +49,7 @@ export const fightSlice = createSlice({
 
             const currentPlayer = state.players.find(player => player.id === action.payload.playerId)
 
-            let monsterHitValue = Math.floor(Math.random() * (50 - 25 + 1)) + 25;
+            let monsterHitValue = Math.floor(Math.random() * (30 - 10 + 1)) + 10;
 
             currentPlayer.pv -= monsterHitValue
 
@@ -71,8 +71,7 @@ export const fightSlice = createSlice({
 
                 currentPlayer.mana -= 10;
                 currentPlayer.pv = 100;
-                currentPlayer.hasPlayed = true;
-               
+
                 endTurn(state)
 
             } else {
@@ -111,9 +110,6 @@ function endTurn(state) {
             player.hasPlayed = false;
         });
     }
-
-
- 
 
 
 }
