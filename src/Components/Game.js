@@ -7,7 +7,7 @@ import winImage from '../assets/images/FFVIIWin.jpg'
 import winAudio from '../assets/sounds/audioWin.mp3'
 import lostAudio from '../assets/sounds/audiolost.mp3'
 import { useSelector } from 'react-redux';
-
+import bgLogo from '../assets/images/pngegg.png'
 
 
 
@@ -25,7 +25,7 @@ function App() {
 
   return (
 
-    <div className="App" >
+    <div className="App" style={{ backgroundImage: `url(${bgLogo})` }}>
       {players.checkDeads === 4 &&
         <div className=' absolute z-50 w-full h-screen flex justify-center items-center backdrop-blur-sm'>
           <button id="restart" onClick={restart} className='px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-500 text-white font-bold rounded-full transition-transform transform-gpu hover:-translate-y-1 hover:shadow-lg'>Restart</button>
