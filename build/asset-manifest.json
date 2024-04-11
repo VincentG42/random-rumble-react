@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/static/css/main.728ef95d.css",
+    "main.js": "/static/js/main.8e43af04.js",
+    "static/media/FFVIIGameover.png": "/static/media/FFVIIGameover.f6851e79045b12201a09.png",
+    "static/media/aerith.png": "/static/media/aerith.99f8fc95fffc7fc0829b.png",
+    "static/media/sephiroth.png": "/static/media/sephiroth.5d3914c55dc68a456399.png",
+    "static/media/vincent.png": "/static/media/vincent.cfce468cf5718dbd4d10.png",
+    "static/media/red-xiii.png": "/static/media/red-xiii.c98de2d5f17037918e6b.png",
+    "static/media/audiolost.mp3": "/static/media/audiolost.910527098d9fb4816da6.mp3",
+    "static/media/cloud.png": "/static/media/cloud.469e3f9a599dbcc2d375.png",
+    "static/media/pngegg.png": "/static/media/pngegg.606c9e7d65514b7c57d2.png",
+    "static/media/FFVIIWin.jpg": "/static/media/FFVIIWin.7a3e971519c045507350.jpg",
+    "static/media/audioWin.mp3": "/static/media/audioWin.3fc24d98accf3fa502ec.mp3",
+    "index.html": "/index.html",
+    "main.728ef95d.css.map": "/static/css/main.728ef95d.css.map",
+    "main.8e43af04.js.map": "/static/js/main.8e43af04.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.728ef95d.css",
+    "static/js/main.8e43af04.js"
+  ]
+}
